@@ -156,8 +156,7 @@ public abstract class AbstractThrusterBlockEntity extends BlockEntity implements
 		}
 	}
 
-	@Override
-	public void tickForce(ServerLevel level, BlockPos pos, BlockState state) {
+	public void onServerTick(ServerLevel level, BlockPos pos, BlockState state) {
 		// If we have changed peripheral mode, and we aren't peripheral mode
 		if (this.wasPeripheralMode != this.isPeripheralMode && !this.isPeripheralMode) {
 			this.updatePowerByRedstone();
@@ -198,8 +197,7 @@ public abstract class AbstractThrusterBlockEntity extends BlockEntity implements
 		return CosmosModParticleTypes.THRUST_SMOKE.get();
 	}
 
-	@Override
-	public void tickParticles(Level level, BlockPos pos, BlockState state) {
+	protected void onClientTick(Level level, BlockPos pos, BlockState state) {
 		Ship ship = VSGameUtilsKt.getShipManagingPos(level, pos);
 		// If we aren't on a ship, then we skip
 		if (ship == null) {
@@ -222,7 +220,6 @@ public abstract class AbstractThrusterBlockEntity extends BlockEntity implements
 
 		spawnParticles(worldPos, direction);
 	}
-
 	protected void spawnParticles(Vector3d pos, Vector3d direction) {
 		// Offset the XYZ by a little bit so its at the end of the thruster block
 		double x = pos.x - direction.x;

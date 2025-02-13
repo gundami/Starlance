@@ -1,6 +1,8 @@
 package net.jcm.vsch.blocks.entity;
 
 import net.jcm.vsch.blocks.entity.template.AbstractThrusterBlockEntity;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import org.joml.Vector3d;
 
 import net.jcm.vsch.config.VSCHConfig;
@@ -45,5 +47,15 @@ public class AirThrusterBlockEntity extends AbstractThrusterBlockEntity {
 					speed.x, speed.y, speed.z
 					);
 		}
+	}
+
+	@Override
+	public void tickForce(ServerLevel level, BlockPos pos, BlockState state) {
+		super.onServerTick(level,pos,state);
+	}
+
+	@Override
+	public void tickParticles(Level level, BlockPos pos, BlockState state) {
+		super.onClientTick(level,pos,state);
 	}
 }
