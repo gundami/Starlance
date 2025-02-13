@@ -32,6 +32,10 @@ public class VSCHConfig {
 	public static final ForgeConfigSpec.ConfigValue<Number> GRAVITY_DISTANCE;
 	public static final ForgeConfigSpec.ConfigValue<Number> GRAVITY_MAX_FORCE;
 
+	public static final ForgeConfigSpec.ConfigValue<Number> THRUSTER_FUEL_CONSUME;
+	public static final ForgeConfigSpec.ConfigValue<Number> POWERFUL_THRUSTER_FUEL_CONSUME;
+	public static final ForgeConfigSpec.ConfigValue<String> FUEL_TYPE;
+
 	static {
 		BUILDER.push("Thrusters");
 
@@ -41,6 +45,9 @@ public class VSCHConfig {
 		AIR_THRUSTER_STRENGTH = BUILDER.comment("Air thruster max force. (Newtons)").define("air_thruster_strength", 7500);
 		POWERFUL_THRUSTER_STRENGTH = BUILDER.comment("Powerful thruster max force. (Newtons)").define("powerful_thruster_strength", 450000);
 
+		THRUSTER_FUEL_CONSUME = BUILDER.comment("Fuel consume speed of thruster").define("thruster_fuel_consume",1);
+		POWERFUL_THRUSTER_FUEL_CONSUME = BUILDER.comment("Fuel consume speed of powerful thruster").define("powerful_thruster_fuel_consume",1.5);
+		FUEL_TYPE = BUILDER.comment("Fuel type").define("fuel_type","minecraft:lava");
 		BUILDER.pop();
 
 		BUILDER.push("Misc");
